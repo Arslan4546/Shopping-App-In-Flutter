@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main(){
-  runApp(const DetailScreen());
-}
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
 

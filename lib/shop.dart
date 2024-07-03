@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:shopping_app/utilities/api_call/api_service.dart';
-void main(){
-  runApp(const ShopScreen());
-}
+
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -25,11 +23,8 @@ class _ShopScreenState extends State<ShopScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     ApiService apiService = ApiService();
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        drawer: const  Drawer(
-        ),
+    return  Scaffold(
+        backgroundColor: Color(0xffE3E6E6),
         appBar: AppBar(
           actions: [
             PopupMenuButton(
@@ -57,14 +52,16 @@ class _ShopScreenState extends State<ShopScreen> {
             ),
           ],
 iconTheme: const IconThemeData(color: Colors.black),
-          backgroundColor:const  Color(0xffF5D33B),
-          title: Text("Your Right Shopping",
+          backgroundColor:const  Color(0xffE2CC34),
+          title: Text(" Shopping ",
               style: GoogleFonts.aladin(
                   textStyle: const TextStyle(
                     fontSize: 30,
                     color: Colors.black,
                   ))),
           centerTitle: true,
+        ),
+        drawer: const  Drawer(
         ),
         body: SafeArea(
           child: Column(
@@ -75,16 +72,23 @@ iconTheme: const IconThemeData(color: Colors.black),
               Padding(
                 padding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                child: TextFormField(
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  controller: searchController,
-                  decoration: InputDecoration(
-                      hintText: "search your product",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+
+                  child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    controller: searchController,
+                    decoration: InputDecoration(
+                        hintText: "search your product",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                  ),
                 ),
               ),
 
@@ -174,7 +178,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                      height: screenHeight * 0.15,
                                      width: double.infinity,
                                      child: Card(
-                                       color: const Color(0xffF5D33B),
+                                       color: const  Color(0xffFFFFFF),
                                        child: Row(
                                          children: [
                                            Padding(
@@ -201,15 +205,12 @@ iconTheme: const IconThemeData(color: Colors.black),
                                              crossAxisAlignment: CrossAxisAlignment.start,
                                              children: [
                                                Padding(
-                                                 padding: const EdgeInsets.only(left: 8.0,top: 5),
+                                                 padding: const EdgeInsets.only(left: 8.0,top: 8),
                                                  child: Row(
                                                    children: [
                                                      Text(
                                                        snapshot.data!.carts![index].products![index].title
                                                            .toString(),
-
-
-
                                                        textAlign: TextAlign.start, // Align the text to start (left)
                                                        style: GoogleFonts.abel(
                                                          textStyle: const TextStyle(
@@ -235,13 +236,11 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                                fontSize: 20,
                                                                color: Colors
                                                                    .black,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
+        )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
-                                                           0.02,
+                                                           0.01,
                                                      ),
 
                                                      Text(
@@ -254,11 +253,12 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                                    .black,
                                                                fontWeight:
                                                                FontWeight
-                                                                   .bold)),
+                                                                   .bold
+      )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
-                                                           0.02,
+                                                           0.09,
                                                      ),
                                                      Text(
                                                        "total",
@@ -267,13 +267,12 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                                fontSize: 20,
                                                                color: Colors
                                                                    .black,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
+
+      )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
-                                                           0.02,
+                                                           0.01,
                                                      ),
                                                      Text(
                                                        snapshot.data!.carts![index].products![index].total
@@ -295,7 +294,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                  ),
                                                ),
                                                Padding(
-                                                 padding: const EdgeInsets.only(top:15,left: 10),
+                                                 padding: const EdgeInsets.only(top:5,left: 10),
                                                  child: Row(
                                                    children: [
                                                      Text(
@@ -304,7 +303,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                            textStyle: const TextStyle(
                                                                color: Colors
                                                                    .black,
-                                                               fontSize: 25,
+                                                               fontSize: 18,
                                                                fontWeight:
                                                                FontWeight
                                                                    .bold)),
@@ -326,14 +325,14 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                                FontWeight
                                                                    .bold)),
                                                      ),
-                                                     SizedBox(
-                                                       width:40,
+                                                    const  SizedBox(
+                                                       width:30,
                                                      ),
                                                      SizedBox(
                                                          height: 35,
                                                          width: 70,
                                                          child: Card(
-                                                           color: Colors.black,
+                                                           color:  Color(0xffE2CC34),
                                                            child: Center(
                                                              child: Text(
                                                                "${snapshot.data!.carts![index].products![index].discountPercentage
@@ -341,7 +340,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                                style: GoogleFonts.abel(
                                                                    textStyle: const TextStyle(
                                                                        color: Colors
-                                                                           .white,
+                                                                           .black,
                                                                        fontWeight:
                                                                        FontWeight
                                                                            .bold)),
@@ -352,19 +351,17 @@ iconTheme: const IconThemeData(color: Colors.black),
 
 
                                                      ),
-                                                     SizedBox(
-                                                       width:10,
+                                                    const  SizedBox(
+                                                       width:5,
                                                      ),
                                                      Text(
                                                        "off",
-                                                       style: GoogleFonts.abel(
+                                                       style: GoogleFonts.lobster(
                                                            textStyle: const TextStyle(
                                                                color: Colors
                                                                    .black,
                                                                fontSize: 25,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
+        )),
                                                      ),
                                                    ],
                                                  ),
@@ -384,7 +381,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                      height: screenHeight * 0.15,
                                      width: double.infinity,
                                      child: Card(
-                                       color: const Color(0xffF5D33B),
+                                       color: const  Color(0xffFFFFFF),
                                        child: Row(
                                          children: [
                                            Padding(
@@ -411,19 +408,16 @@ iconTheme: const IconThemeData(color: Colors.black),
                                              crossAxisAlignment: CrossAxisAlignment.start,
                                              children: [
                                                Padding(
-                                                 padding: const EdgeInsets.only(left: 8.0),
+                                                 padding: const EdgeInsets.only(left: 8.0,top: 8),
                                                  child: Row(
                                                    children: [
                                                      Text(
                                                        snapshot.data!.carts![index].products![index].title
                                                            .toString(),
-                                                       maxLines: 1,
-                                                       overflow: TextOverflow.ellipsis,
-                                                       softWrap: true, // This property is not needed when maxLines is 1
                                                        textAlign: TextAlign.start, // Align the text to start (left)
                                                        style: GoogleFonts.abel(
                                                          textStyle: const TextStyle(
-                                                           fontSize: 18,
+                                                           fontSize: 20,
                                                            color: Colors.black,
                                                            fontWeight: FontWeight.bold,
                                                          ),
@@ -433,59 +427,19 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                    ],
                                                  ),
                                                ),
+
                                                Padding(
-                                                 padding: const EdgeInsets.only(left: 10.0),
-                                                 child: Row(
-
-                                                   children: [
-                                                     const Icon(
-                                                       Icons.star,
-                                                       color: Colors.white,
-                                                       size: 17,
-                                                     ),
-                                                     const Icon(
-                                                       Icons.star,
-                                                       color: Colors.white,
-                                                       size: 17,
-                                                     ),
-                                                     const Icon(
-                                                       Icons.star,
-                                                       color: Colors.white,
-                                                       size: 17,
-                                                     ),
-                                                     SizedBox(
-                                                       width: screenWidth *
-                                                           0.02,
-                                                     ),
-
-                                                     Text(
-                                                       "3.7",
-                                                       style: GoogleFonts.abel(
-                                                           textStyle: const TextStyle(
-                                                               color: Colors
-                                                                   .black,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
-                                                     ),
-
-
-                                                   ],
-                                                 ),
-                                               ),
-                                               Padding(
-                                                 padding: const EdgeInsets.only(top: 8.0,left: 10),
+                                                 padding: const EdgeInsets.only(left: 10),
                                                  child: Row(
                                                    children: [
                                                      Text(
                                                        "Quantity",
                                                        style: GoogleFonts.abel(
                                                            textStyle: const TextStyle(
-                                                               color: Colors
-                                                                   .black,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
+                                                             fontSize: 20,
+                                                             color: Colors
+                                                                 .black,
+                                                           )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
@@ -497,25 +451,27 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                            .toString(),
                                                        style: GoogleFonts.abel(
                                                            textStyle: const TextStyle(
+                                                               fontSize: 20,
                                                                color: Colors
                                                                    .black,
                                                                fontWeight:
                                                                FontWeight
-                                                                   .bold)),
+                                                                   .bold
+                                                           )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
-                                                           0.02,
+                                                           0.09,
                                                      ),
                                                      Text(
                                                        "total",
                                                        style: GoogleFonts.abel(
                                                            textStyle: const TextStyle(
-                                                               color: Colors
-                                                                   .black,
-                                                               fontWeight:
-                                                               FontWeight
-                                                                   .bold)),
+                                                             fontSize: 20,
+                                                             color: Colors
+                                                                 .black,
+
+                                                           )),
                                                      ),
                                                      SizedBox(
                                                        width: screenWidth *
@@ -526,6 +482,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                            .toString(),
                                                        style: GoogleFonts.abel(
                                                            textStyle: const TextStyle(
+                                                               fontSize: 20,
                                                                color: Colors
                                                                    .black,
                                                                fontWeight:
@@ -540,7 +497,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                  ),
                                                ),
                                                Padding(
-                                                 padding: const EdgeInsets.only(top: 8.0,left: 10),
+                                                 padding: const EdgeInsets.only(top:10,left: 10),
                                                  child: Row(
                                                    children: [
                                                      Text(
@@ -549,6 +506,7 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                            textStyle: const TextStyle(
                                                                color: Colors
                                                                    .black,
+                                                               fontSize: 18,
                                                                fontWeight:
                                                                FontWeight
                                                                    .bold)),
@@ -563,25 +521,25 @@ iconTheme: const IconThemeData(color: Colors.black),
                                                            .toString(),
                                                        style: GoogleFonts.abel(
                                                            textStyle: const TextStyle(
+                                                               fontSize: 25,
                                                                color: Colors
                                                                    .black,
                                                                fontWeight:
                                                                FontWeight
                                                                    .bold)),
                                                      ),
-                                                     SizedBox(
-                                                       width: screenWidth *
-                                                           0.15,
+                                                     const  SizedBox(
+                                                       width:40,
                                                      ),
                                                      SizedBox(
-                                                         height: 30,
-                                                         width: 50,
+                                                         height: 35,
+                                                         width: 70,
                                                          child: Card(
                                                            color: Colors.black,
                                                            child: Center(
                                                              child: Text(
-                                                               snapshot.data!.carts![index].products![index].discountPercentage
-                                                                   .toString(),
+                                                               "${snapshot.data!.carts![index].products![index].discountPercentage
+                                                                   .toString()} %",
                                                                style: GoogleFonts.abel(
                                                                    textStyle: const TextStyle(
                                                                        color: Colors
@@ -595,7 +553,20 @@ iconTheme: const IconThemeData(color: Colors.black),
 
 
 
-                                                     ),],
+                                                     ),
+                                                     const  SizedBox(
+                                                       width:8,
+                                                     ),
+                                                     Text(
+                                                       "off",
+                                                       style: GoogleFonts.lobster(
+                                                           textStyle: const TextStyle(
+                                                             color: Colors
+                                                                 .black,
+                                                             fontSize: 25,
+                                                           )),
+                                                     ),
+                                                   ],
                                                  ),
                                                ),
                                              ],
@@ -618,7 +589,6 @@ iconTheme: const IconThemeData(color: Colors.black),
           ),
         ),
 
-      ),
-    );
+      );
   }
 }
